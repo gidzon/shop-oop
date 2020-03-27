@@ -44,8 +44,10 @@ class User
         }
     }
 
-    public function getUser($pdo, $idUser)
+    public function getUser($pdo, $login)
     {
+        $this->login = $login;
+        
         $sql = "SELECT * FROM user WHERE login=?";
         $query = $pdo->prepare($sql);
         $query->execute([$this->login]);

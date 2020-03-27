@@ -3,6 +3,10 @@ include 'vendor/autoload.php';
 include 'config/config.php';
 
 use app\Product;
+use app\User;
+
+$user = new User();
+$val = $user->getUser($pdo, $_SESSION['auth']);
 
 $products = new Product();
 $data = $products->getProductsFromCategory($pdo, $_GET['idCategory']);
@@ -17,7 +21,7 @@ $data = $products->getProductsFromCategory($pdo, $_GET['idCategory']);
 <body>
 <header>
     <?php if(!empty($_SESSION['auth'])): ?>
-        <a href="profile.php?id=<?php echo $data['id']; ?>"><?php echo $_SESSION['auth']; ?></a>
+        <a href="profile.php?id=<?php echo $val['id']; ?>"><?php echo $_SESSION['auth']; ?></a>
         <a href="handler/exit.php">Выход</a>
     <?php else: ?>
         <a href="reg.php">Регистрация</a>
@@ -27,7 +31,7 @@ $data = $products->getProductsFromCategory($pdo, $_GET['idCategory']);
     <a href="/">home</a>
     <?php foreach($data as $product): ?>
     <div class="product">
-       <a href="product.php?id=<?php echo $product['idproduct']; ?>"><H1><?php echo $product['title']; ?></H1></a>
+       <a href="product.php?idproduct=<?php echo $product['idproduct']; ?>"><H1><?php echo $product['title']; ?></H1></a>
         <img src="<?php echo $product['image']; ?>" alt="">
         <p><?php echo $product['price']; ?></p>
         <a href="product.php?id=<?php echo $product['idproduct']; ?>">подробнее</a>

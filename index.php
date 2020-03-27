@@ -3,6 +3,11 @@ include 'vendor/autoload.php';
 include 'config/config.php';
 
 use app\Category;
+use app\User;
+
+$user = new User();
+$data = $user->getUser($pdo, $_SESSION['auth']);
+
 $categories = Category::getCategories($pdo);
 ?>
 <!DOCTYPE html>
@@ -16,6 +21,7 @@ $categories = Category::getCategories($pdo);
 <?php if(!empty($_SESSION['auth'])): ?>
         <a href="profile.php?id=<?php echo $data['id']; ?>"><?php echo $_SESSION['auth']; ?></a>
         <a href="handler/exit.php">Выход</a>
+        <a href="admin.php">admin</a>
     <?php else: ?>
         <a href="reg.php">Регистрация</a>
         <a href="auth.php">Авторизация</a>

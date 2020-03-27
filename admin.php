@@ -1,7 +1,7 @@
 <?php
 
 include 'vendor/autoload.php';
-include 'config/bd.php';
+include 'config/config.php';
 
 use app\Category;
 use app\Product;
@@ -20,6 +20,9 @@ $val = $products->getProducts($pdo);
     <title>Document</title>
 </head>
 <body>
+<header>
+<a href="/">home</a>
+</header>
     <p>add product</p>
     <form action="handler/admin.php" method="post" enctype="multipart/form-data">
         <input type="text" name="title" placeholder="title">
