@@ -2,38 +2,35 @@
 
 namespace app;
 
-use app\User;
 
 class Cart
 {
     private $price;
     private $number;
     private $summ;
-    private $login;
+    private $idUser;
+    private $title;
+    private $image;
 
-    public  function addProduct($pdo, $login, $idProduct, $price, $number)
+    public  function addProduct($pdo, $idUser, $idProduct, $title,  $price, $number, $image)
     {
         $this->price = $price;
         $this->number = $number;
-        $this->login = $login;
+        $this->idUser = $idUser;
+        $this->title = $title;
+        $this->image = $image;
 
-        if (!is_int($number)){
-            $this->number = (int)$number;
-        }
+        
 
         $this->summ = $this->price*$this->number;
 
-        $sql = "SELECT title, image FROM product WHERE idproduct=?";
-        $query = $pdo->prepare($sql);
-        $query->execute([$idProduct]);
-        $product = $query->fetch();
+        
 
-        $user = new User();
-        $userInfo = $user->getUser($pdo, $this->login);
+        $date = date('d-m-Y');
 
         $sql = "INSERT INTO cart (title, summ, image, date, id_user) VALUES (?,?,?,?,?)";
         $query = $pdo->prepare($sql);
-        $query->execute([$product['title'], $this->summ, $product['image'], date('d-m-Y'), $userInfo['id']]);
+        $query->execute([$this->title, $this->summ, $this->image, $date, $this->idUser]);
 
     }
 
@@ -44,5 +41,10 @@ class Cart
         $query->execute([$idUser]);
         $cart = $query->fetchAll();
         return $cart;
+    }
+
+    public function getSummProduct($pdo)
+    {
+
     }
 }
