@@ -19,16 +19,21 @@ foreach ($cartInfo as  $value) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <title>Корзина</title>
 </head>
 <body>
-    <?php foreach($cartInfo as $cart): ?>
-    <div class="cart">
-        <p><img src="<?php echo $cart['image']; ?>" alt=""></p>
-        <p><?php echo $cart['title']; ?></p>
-        <p>сумма <?php echo $cart['summ']; ?></p>
-        <p>итого: <?php echo $summ; ?></p>
-    </div>
-    <?php endforeach; ?>
+    
+        <div class="content-top">
+            <?php foreach($cartInfo as $cart): ?>
+                <div class="cart">
+                    <img src="<?php echo $cart['image']; ?>" alt="">
+                    <p>сумма <?php echo $cart['summ']; ?></p>
+                    <p><?php echo $cart['title']; ?></p>
+                    <a id="del" href="#">удалить</a>
+                </div>
+            <?php endforeach; ?>
+        </div>   
+    <p id="result">итого: <?php echo $summ; ?></p>
 </body>
 </html>
