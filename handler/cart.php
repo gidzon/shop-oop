@@ -31,5 +31,3 @@ $cart->addProduct($pdo, $idUser, $idProduct, $title, $price, $number, $productIn
 
 
 
-// $cart->getCart($pdo, $userInfo['id']);
-// json_encode($cart);

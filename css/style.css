@@ -75,3 +75,45 @@ h3, a{
 .product p, #detailed{
     font-size: 30px;
 }
+
+/* cart */
+
+.content-top{
+    
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    
+}
+
+.cart{
+    border: 2px solid black;
+    margin-bottom: 5%;
+    background-color: honeydew;
+}
+
+#del{
+    float: right;
+    display: block;
+    margin: 2%;
+}
+
+
+.cart p{
+    float: right;
+    color: green;
+    padding: 2%;
+}
+
+.content-top img{
+    width: 15%;
+    padding: 10px 5px 5px 10px;
+}
+
+
+#result{
+    position: absolute; right: 20%;
+    font-size: 30px;
+    color: #FFA07A;
+}
