@@ -43,8 +43,5 @@ class Cart
         return $cart;
     }
 
-    public function getSummProduct($pdo)
-    {
-
-    }
+    
 }
