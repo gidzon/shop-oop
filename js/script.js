@@ -10,7 +10,6 @@ window.onload = function () {
 
       var data = "id=" + idProduct + "&number=" + number + "&price=" + price + "&userid=" + idUser
       
-      console.log(idProduct, number, price, idUser)
 
       var xhr = new XMLHttpRequest()
       xhr.open('GET', "handler/cart.php?" + data)
@@ -24,4 +23,3 @@ window.onload = function () {
   
   }
 
-//   получить ответ от сервера

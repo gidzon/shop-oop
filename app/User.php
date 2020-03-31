@@ -38,9 +38,11 @@ class User
 
         
 
-        if(password_verify($this->pass, $data['password']) && !empty($data)){
+        if (password_verify($this->pass, $data['password']) && !empty($data)) {
             
-            return $data;
+            return true;
+        } else {
+            return false;
         }
     }
 

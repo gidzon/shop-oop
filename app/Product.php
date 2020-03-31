@@ -61,19 +61,19 @@ class Product
         $this->price = $price;
         $this->description = $description;
 
-        if (!empty($this->title)){
+        if (!empty($this->title)) {
             $sql = "UPDATE product SET titile=? WHERE idproduct=?";
             $query = $pdo->prepare($sql);
             $query->execute([ $this->title, $idProduct]);
-        } elseif (!empty($this->price)){
+        } elseif (!empty($this->price)) {
             $sql = "UPDATE product SET  price=? WHERE idproduct=?";
             $query = $pdo->prepare($sql);
             $query->execute([$this->price, $idProduct]);
-        } elseif (!empty($this->description)){
+        } elseif (!empty($this->description)) {
             $sql = "UPDATE product SET  description=? WHERE idproduct=?";
             $query = $pdo->prepare($sql);
             $query->execute([$this->description, $idProduct]);
-        } elseif (!empty($_FILES)){
+        } elseif (!empty($_FILES)) {
             $sql = "UPDATE product SET  image=? WHERE idproduct=?";
             $query = $pdo->prepare($sql);
             $query->execute([$pathImg, $idProduct]);

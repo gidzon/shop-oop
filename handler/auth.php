@@ -5,12 +5,13 @@ include '../config/config.php';
 
 use app\User;
 
-$login = $_POST['login'];
-$pass = $_POST['pass'];
+$login = strip_tags(trim($_POST['login']));
+$pass = strip_tags(trim($_POST['pass']));
 
 $user = new User();
-$data = $user->auth($pdo, $login, $pass);
-$_SESSION['auth'] = $data['login'];
+$auth = $user->auth($pdo, $login, $pass);
 
-
+if ($auth === true) {
+    $_SESSION['auth'] = $login;
+}
 header("Location: /");

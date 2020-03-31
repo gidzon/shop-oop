@@ -5,10 +5,10 @@ include '../vendor/autoload.php';
 
 use app\Product;
 
-if (!empty($_POST['update']) or !empty($_FILES)){
-    $title = $_POST['title'];
-    $price = $_POST['price'];
-    $description = $_POST['description'];
+if (!empty($_POST['update']) || !empty($_FILES)) {
+    $title = strip_tags(trim($_POST['title']));
+    $price = strip_tags(trim($_POST['price']));
+    $description = strip_tags(trim($_POST['description']));
 
     $name = $_FILES['userfile']['name'];
     $tmpPath = $_FILES['userfile']['tmp_name'];

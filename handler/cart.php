@@ -11,12 +11,8 @@ $idProduct = $_GET['id'];
 $number = $_GET['number'];
 $price = $_GET['price'];
 $idUser = $_GET['userid'];
-$title = $_GET['title'];
 
-$_SESSION['id'] = $idProduct;
 
-$summ = $price*$number;
-$date = date('d-m-Y');
 $product = new Product();
 $productInfo = $product->getProduct($pdo, $idProduct);
 
@@ -27,7 +23,4 @@ $image = $productInfo['image'];
 
 
 $cart = new Cart();
-$cart->addProduct($pdo, $idUser, $idProduct, $title, $price, $number, $productInfo['image']);
-
-
-
+$cart->addProduct($pdo, $idUser, $idProduct, $title, $price, $number, $image);
